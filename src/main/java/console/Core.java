@@ -1,10 +1,12 @@
 package console;
 
+import controller.BookingController;
 import controller.FlightsController;
 import controller.UserController;
 import dao.FlightsDAO;
 import dao.UserDAO;
 import models.Airport;
+import models.Booking;
 import models.User;
 import service.FlightsService;
 import java.io.IOException;
@@ -20,6 +22,7 @@ public class Core {
     FlightsController flightsController = new FlightsController(flightsService);
 
     UserController userController = new UserController();
+    BookingController bookingController = new BookingController();
 
     public void login() throws InterruptedException, IOException, ClassNotFoundException {
         System.out.print("Enter username: ");
@@ -60,18 +63,22 @@ public class Core {
     }
 
     public void makeBooking(){
-
+        bookingController.makeBooking(new Booking());
     }
 
     public void showMyBooking(){
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+        bookingController.getBookingsByUser(new User(username, password));
 
     }
 
     public void cancelMyBooking(){
-
-    }
-
-    public void logOut(){
+        System.out.print("Enter booking id: ");
+        int id = scanner.nextInt();
+        bookingController.cancelBooking(id);
     }
 
 

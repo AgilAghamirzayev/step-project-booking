@@ -1,7 +1,5 @@
 package dao;
 
-
-import models.Flights;
 import models.User;
 import java.io.*;
 import java.util.*;

@@ -14,7 +14,6 @@ public class FlightsController  {
         this.service = service;
     }
 
-
     public List<Flights> getAllFlights()  {
         return service.getAllFlights();
     }

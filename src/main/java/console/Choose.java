@@ -12,7 +12,7 @@ public class Choose {
     Core core = new Core();
 
 
-    public void booking_choose()  {
+    public void booking_choose() throws InterruptedException, IOException, ClassNotFoundException {
         boolean exit = true;
         while (exit) {
             Scanner scanner = new Scanner(System.in);
@@ -38,7 +38,7 @@ public class Choose {
                     core.cancelMyBooking();
                     break;
                 case 6:
-                    core.logOut();
+                    user_choose();
                     break;
                 case 7:
                     exit = false;
