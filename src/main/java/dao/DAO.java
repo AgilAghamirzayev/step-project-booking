@@ -1,4 +1,5 @@
 package dao;
+import javax.naming.AuthenticationException;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Optional;

@@ -1,10 +1,13 @@
 package console;
 
 import controller.FlightsController;
+import controller.UserController;
 import dao.FlightsDAO;
+import dao.UserDAO;
 import models.Airport;
+import models.User;
 import service.FlightsService;
-
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -16,20 +19,27 @@ public class Core {
     FlightsService flightsService = new FlightsService(flightsDAO);
     FlightsController flightsController = new FlightsController(flightsService);
 
+    UserController userController = new UserController();
 
-
-    public void login(){
-
+    public void login() throws InterruptedException, IOException, ClassNotFoundException {
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+        userController.login(username, password);
     }
 
     public void createNewAccount(){
-
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+        userController.register(new User(username,password));
     }
 
 
     public void showTimetable() {
         flightsController.getAllFlights().stream().forEach(System.out::println);
-        flightsDAO.write();
     }
 
     public void searchFlight(){
@@ -62,7 +72,6 @@ public class Core {
     }
 
     public void logOut(){
-
     }
 
 

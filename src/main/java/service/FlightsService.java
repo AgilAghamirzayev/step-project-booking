@@ -34,7 +34,7 @@ public class FlightsService  {
     }
 
     public void displayAllFlights(){
-        dao.read();
+        dao.getAll();
     }
 
 

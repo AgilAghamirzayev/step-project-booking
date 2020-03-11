@@ -3,6 +3,7 @@ package console;
 import menu.BookingMenu;
 import menu.UserMenu;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Choose {
@@ -49,7 +50,7 @@ public class Choose {
         }
     }
 
-    public void user_choose(){
+    public void user_choose() throws InterruptedException, IOException, ClassNotFoundException {
         boolean exit = true;
             while (exit) {
                 Scanner scanner = new Scanner(System.in);
@@ -57,6 +58,7 @@ public class Choose {
                 switch (scanner.nextInt()) {
                     case 1:
                         core.login();
+                        booking_choose();
                         break;
                     case 2:
                         core.createNewAccount();
