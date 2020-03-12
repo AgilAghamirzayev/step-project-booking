@@ -1,5 +1,6 @@
 package console;
 
+import dao.UserDAO;
 import menu.BookingMenu;
 import menu.UserMenu;
 
@@ -7,6 +8,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Choose {
+    UserDAO userDAO = new UserDAO();
     BookingMenu booking_menu = new BookingMenu();
     UserMenu userMenu = new UserMenu();
     Core core = new Core();
@@ -42,6 +44,7 @@ public class Choose {
                     break;
                 case 7:
                     exit = false;
+
                     break;
                 default:
                     System.out.println("Choose valid order");
@@ -58,10 +61,13 @@ public class Choose {
                 switch (scanner.nextInt()) {
                     case 1:
                         core.login();
+                        userDAO.getUsers().forEach(System.out::println);
                         booking_choose();
+                        exit=false;
                         break;
                     case 2:
                         core.createNewAccount();
+                        userDAO.getUsers().forEach(System.out::println);
                         break;
                     case 3:
                         exit=false;

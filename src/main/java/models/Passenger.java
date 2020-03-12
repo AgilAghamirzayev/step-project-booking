@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Passenger implements Serializable {
-    private static final long UID = 1L;
+    private static final long serialVersionUID = 1L;
     private static int counter;
 
     private final int id;

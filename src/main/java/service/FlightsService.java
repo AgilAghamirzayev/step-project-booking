@@ -33,10 +33,4 @@ public class FlightsService  {
         return dao.get(id);
     }
 
-    public void displayAllFlights(){
-        dao.getAll();
-    }
-
-
-
 }

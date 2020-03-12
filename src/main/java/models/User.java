@@ -7,15 +7,16 @@ import java.util.Objects;
 
 public class User implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private static int counter=1;
 
-    private final int id;
-    private final String username;
-    private final String password;
-    private final List<Booking> bookings;
+    private  int id;
+    private  String username;
+    private  String password;
+    private  List<Booking> bookings;
 
 
-    public User( String username, String password) {
+    public User(String username, String password) {
         this.id = counter++;
         this.username = username;
         this.password = password;
@@ -27,6 +28,10 @@ public class User implements Serializable {
         this.username = username;
         this.password = password;
         this.bookings = new ArrayList<>();
+    }
+
+    public User(){
+
     }
 
     public Integer getId() {

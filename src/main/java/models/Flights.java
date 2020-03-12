@@ -1,21 +1,22 @@
 package models;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Flights {
+public class Flights implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    private static final long UID=1L;
     private static int counter=1;
 
-    private final int id;
-    private final int size;
-    private final Airline airline;
-    private final Airport src;
-    private final Airport dst;
-    private final LocalDateTime departure;
-    private final List<Passenger> passengers;
+    private int id;
+    private  int size;
+    private  Airline airline;
+    private  Airport src;
+    private  Airport dst;
+    private  LocalDateTime departure;
+    private  List<Passenger> passengers;
 
     public Flights(Airline airline, Airport from, Airport to, LocalDateTime departure, List<Passenger> passengers, int size) {
         this.id = counter++;
@@ -26,6 +27,11 @@ public class Flights {
         this.departure = departure;
         this.passengers = passengers;
     }
+
+    public Flights(int id){
+        this.id = id;
+    }
+
 
     public Flights(int id, Airline airline, Airport from, Airport to, LocalDateTime departure,  int size) {
         this.id = id;

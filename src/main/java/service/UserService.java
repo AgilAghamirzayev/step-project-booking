@@ -2,7 +2,6 @@ package service;
 
 import dao.UserDAO;
 import models.User;
-
 import java.io.IOException;
 import java.util.Optional;
 

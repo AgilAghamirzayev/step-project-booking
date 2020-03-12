@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Booking implements Serializable {
 
+
+    private static final long serialVersionUID = 1L;
     private static int counter = 1;
 
     private int id;
@@ -61,9 +63,6 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-//        return "ID: " + id + " Fly From " +  + " to the " + flights.getToCity().getName() + " on day: " + flights.getTime() +
-//                " there are only " + passengers.size() + " seats " ;
-
         return String.format("ID: %d Passenger: %s Flight: %s", id, passengers.toString(), flights );
     }
 }

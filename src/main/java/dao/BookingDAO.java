@@ -1,6 +1,7 @@
 package dao;
 
-import models.Booking;
+import models.*;
+
 import java.io.*;
 import java.util.*;
 
@@ -17,7 +18,12 @@ public class BookingDAO implements DAO<Booking>{
 
     @Override
     public Collection<Booking> getAll() {
-        return books;
+        try (ObjectInputStream ois = new ObjectInputStream( new BufferedInputStream(new FileInputStream(file)))) {
+            return (List<Booking>) ois.readObject();
+        } catch (ClassNotFoundException | IOException ex) {
+            ex.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
     @Override
@@ -35,7 +41,7 @@ public class BookingDAO implements DAO<Booking>{
     @Override
     public void write() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)))){
-            oos.writeObject(getAll().toArray());
+            oos.writeObject(books);
         } catch (Exception e){
             System.out.println(e.toString());
         }
@@ -43,10 +49,15 @@ public class BookingDAO implements DAO<Booking>{
 
     @Override
     public void read() {
-        try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))){
-            books = (List<Booking>) ois.readObject();
-        } catch (Exception e){
-            System.out.println(e.toString());
-        }
+
     }
+
+//    public static void main(String[] args) {
+//        BookingDAO bookingDAO = new BookingDAO();
+//        UserDAO userDAO = new UserDAO();
+//        User user = new User("Aqil","12345");
+//        userDAO.create(user);
+//        bookingDAO.create(new Booking(user, new Passenger("Ali","Muradli"),new Flights(1)));
+//        bookingDAO.getAll().forEach(System.out::println);
+//    }
 }

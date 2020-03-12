@@ -7,9 +7,9 @@ import java.util.Optional;
 public interface DAO<T> {
 
     T get(int id);
-    Collection<T> getAll() throws IOException, ClassNotFoundException, InterruptedException;
+    Collection<T> getAll();
     void create(T data);
     void delete(int id);
-    void write();
+    void write() throws IOException;
     void read();
 }
