@@ -28,9 +28,6 @@ public class Flights implements Serializable {
         this.passengers = passengers;
     }
 
-    public Flights(int id){
-        this.id = id;
-    }
 
 
     public Flights(int id, Airline airline, Airport from, Airport to, LocalDateTime departure,  int size) {

@@ -117,11 +117,15 @@ public class Core {
         String date = scanner.nextLine();
         System.out.print("Enter number of passengers: ");
         int numberOfPassengers=scanner.nextInt();
+        System.out.print("Enter an airline: ");
         Optional<Flights> flights;
-        System.out.println("Enter an airline: ");
         do {
             String airline = scanner.nextLine().toUpperCase().trim();
-            flights = flightsController.getAllFlights().stream().filter(s->s.getAirline().toString().equals(airline)).findAny();
+               flights  = flightsController.getAllFlights().stream()
+                        .filter(s -> s.getFrom().toString().equals(from) &&
+                                s.getTo().toString().equals(to) &&
+                                s.getDeparture().toLocalDate().toString().equals(date)&&
+                                s.getAirline().toString().equals(airline)).findAny();
         } while (!flights.isPresent());
         Flights flight = flights.get();
         IntStream.range(1,numberOfPassengers+1).forEach(n-> {

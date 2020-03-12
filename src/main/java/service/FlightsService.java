@@ -7,6 +7,7 @@ import models.Flights;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class FlightsService  {
@@ -31,6 +32,11 @@ public class FlightsService  {
 
     public Flights getFlightById(int id){
         return dao.get(id);
+    }
+
+    public Optional<Flights> getAirline(String airline){
+        return dao.getAll().stream()
+                .filter(flights -> flights.getAirline().equals(airline)).findAny();
     }
 
 }

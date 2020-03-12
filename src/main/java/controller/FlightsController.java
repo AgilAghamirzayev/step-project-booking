@@ -5,6 +5,7 @@ import models.Flights;
 import service.FlightsService;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 public class FlightsController  {
@@ -24,6 +25,10 @@ public class FlightsController  {
 
     public Flights getFlightById(int id){
         return service.getFlightById(id);
+    }
+
+    public Optional<Flights> getAirline(String airline){
+        return service.getAirline(airline);
     }
 }
 
