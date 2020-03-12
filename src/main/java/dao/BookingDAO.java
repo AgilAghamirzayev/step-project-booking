@@ -47,17 +47,5 @@ public class BookingDAO implements DAO<Booking>{
         }
     }
 
-    @Override
-    public void read() {
 
-    }
-
-//    public static void main(String[] args) {
-//        BookingDAO bookingDAO = new BookingDAO();
-//        UserDAO userDAO = new UserDAO();
-//        User user = new User("Aqil","12345");
-//        userDAO.create(user);
-//        bookingDAO.create(new Booking(user, new Passenger("Ali","Muradli"),new Flights(1)));
-//        bookingDAO.getAll().forEach(System.out::println);
-//    }
 }

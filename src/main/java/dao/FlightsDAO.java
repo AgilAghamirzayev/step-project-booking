@@ -3,8 +3,6 @@ package dao;
 import models.Airline;
 import models.Airport;
 import models.Flights;
-import models.User;
-
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -65,18 +63,5 @@ public class FlightsDAO  implements DAO<Flights> {
         } catch (IOException ignored){
 
         }
-    }
-
-    @Override
-    public void read() {
-
-    }
-
-    public static void main(String[] args) {
-        FlightsDAO dao = new FlightsDAO();
-       // dao.write();
-
-
-        dao.getAll().forEach(System.out::println);
     }
 }

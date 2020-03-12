@@ -53,21 +53,5 @@ public class UserDAO  implements DAO<User>{
         }
     }
 
-    @Override
-    public void read() {
-    }
-
-//    public static void main(String[] args) {
-//        UserDAO userDAO = new UserDAO();
-//        userDAO.create(new User("Aqil","Zeka"));
-//        userDAO.create(new User("Ali","12345"));
-//        userDAO.create(new User("Zeyneb","AliAli"));
-//        userDAO.getAll().forEach(System.out::println);
-//        System.out.println("_______________________________________");
-//        userDAO.getUsers().forEach(System.out::println);
-//        System.out.println("_______________________________________");
-//        userDAO.delete(1);
-//        userDAO.getUsers().forEach(System.out::println);
-//    }
 
 }

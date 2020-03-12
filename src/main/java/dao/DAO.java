@@ -11,5 +11,4 @@ public interface DAO<T> {
     void create(T data);
     void delete(int id);
     void write() throws IOException;
-    void read();
 }
