@@ -24,7 +24,6 @@ public class Booking implements Serializable {
         this.user.addBooking(this);
     }
 
-
     public int getId() {
         return id;
     }
