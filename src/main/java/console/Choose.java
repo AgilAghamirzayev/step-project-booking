@@ -1,16 +1,13 @@
 package console;
 
-import dao.UserDAO;
 import menu.BookingMenu;
 import menu.UserMenu;
 import java.util.Scanner;
 
 public class Choose {
-    UserDAO userDAO = new UserDAO();
     BookingMenu booking_menu = new BookingMenu();
     UserMenu userMenu = new UserMenu();
     Core core = new Core();
-
 
     public void booking_choose()  {
         boolean exit = true;

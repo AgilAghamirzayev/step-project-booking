@@ -59,7 +59,7 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("|ID: %02d | |Passenger: %9s %9s| Flight: %s |Date: %s|", id, passengers.getFirstName().toUpperCase(), passengers.getLastName().toUpperCase(), flights, booked );
+        return String.format("|ID: %02d | |Passenger: %9s %9s| |Flight: %s |Date: %s|", id, passengers.getFirstName().toUpperCase(), passengers.getLastName().toUpperCase(), flights, booked );
     }
 }
 
