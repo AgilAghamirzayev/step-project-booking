@@ -11,15 +11,10 @@ public class UserDAO  implements DAO<User>{
     private List<User> users = new LinkedList<>();
     private File file = new File("userFile.txt");
 
-    public List<User> getUsers() {
-        return users;
-    }
-
 
     @Override
     public User get(int id)  {
-        User user = users.get(id);
-        return user;
+        return users.get(id);
     }
 
     @Override
@@ -40,7 +35,7 @@ public class UserDAO  implements DAO<User>{
 
     @Override
     public void delete(int id) {
-        users.remove(id-1);
+        users.removeIf(user -> user.getId()==id);
         write();
     }
 

@@ -4,6 +4,7 @@ import models.*;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class BookingDAO implements DAO<Booking>{
 
@@ -27,15 +28,15 @@ public class BookingDAO implements DAO<Booking>{
     }
 
     @Override
-    public void create(Booking data) {
-        if (data!=null || !(books.contains(data))){
-            books.add(data);
-        }
+    public void create(Booking book) {
+        books.add(book);
+        write();
     }
 
     @Override
     public void delete(int id) {
         books.removeIf(booking -> id==booking.getId());
+        write();
     }
 
     @Override
@@ -43,9 +44,16 @@ public class BookingDAO implements DAO<Booking>{
         try (ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)))){
             oos.writeObject(books);
         } catch (Exception e){
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
     }
+
+//    public static void main(String[] args) {
+//        BookingDAO bookingDAO = new BookingDAO();
+//        FlightsDAO flights = new FlightsDAO();
+//        bookingDAO.create(new Booking(new User("vddv","sicsiv"),new Passenger("ALI","LOI"),flights.get(12)));
+//        bookingDAO.getAll().forEach(System.out::println);
+//    }
 
 
 }

@@ -1,9 +1,7 @@
 package models;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.List;
-
+import java.time.LocalDate;
 public class Booking implements Serializable {
 
 
@@ -14,20 +12,18 @@ public class Booking implements Serializable {
     private User user;
     private Flights flights;
     private Passenger passengers;
-    private LocalDateTime booked;
+    private LocalDate booked;
 
-    public Booking(User user,  Passenger passenger, Flights flights) {
+    public Booking(User user, Passenger passenger, Flights flights) {
         this.id = counter++;
-        this.booked = LocalDateTime.now();
+        this.booked = LocalDate.now();
         this.user = user;
+        this.passengers=passenger;
         this.flights = flights;
         this.flights.addPassenger(passenger);
         this.user.addBooking(this);
     }
 
-    public Booking(){
-
-    }
 
     public int getId() {
         return id;
@@ -63,7 +59,7 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("ID: %d Passenger: %s Flight: %s", id, passengers.toString(), flights );
+        return String.format("|ID: %02d | |Passenger: %9s %9s| Flight: %s |Date: %s|", id, passengers.getFirstName().toUpperCase(), passengers.getLastName().toUpperCase(), flights, booked );
     }
 }
 

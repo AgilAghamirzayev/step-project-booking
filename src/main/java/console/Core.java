@@ -117,9 +117,9 @@ public class Core {
         String date = scanner.nextLine();
         System.out.print("Enter number of passengers: ");
         int numberOfPassengers=scanner.nextInt();
-        System.out.print("Enter an airline: ");
         Optional<Flights> flights;
         do {
+            System.out.print("Enter airport: ");
             String airline = scanner.nextLine().toUpperCase().trim();
                flights  = flightsController.getAllFlights().stream()
                         .filter(s -> s.getFrom().toString().equals(from) &&
@@ -142,8 +142,6 @@ public class Core {
         core.createNewAccount();
         core.showTimetable();
         core.makeBooking();
-        core.showMyBooking();
-        core.cancelMyBooking();
         core.showMyBooking();
     }
 

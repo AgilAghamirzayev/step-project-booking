@@ -38,7 +38,7 @@ public class Passenger implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("ID: %d, first name: %s, last name: %s", id,firstName,lastName);
+        return String.format("first name: %s, last name: %s ",firstName,lastName);
     }
 
     @Override

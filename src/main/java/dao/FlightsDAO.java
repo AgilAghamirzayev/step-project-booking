@@ -16,6 +16,7 @@ public class FlightsDAO  implements DAO<Flights> {
 
     @Override
     public Flights get(int id) {
+        write();
         return flights.get(id);
     }
 
@@ -31,6 +32,7 @@ public class FlightsDAO  implements DAO<Flights> {
 
     @Override
     public void create(Flights flight) {
+        write();
         flights.add(flight);
     }
 
