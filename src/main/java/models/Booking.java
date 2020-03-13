@@ -2,12 +2,12 @@ package models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-public class Booking implements Serializable {
+import java.util.Objects;
 
+public class Booking implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private static int counter = 1;
-
     private int id;
     private User user;
     private Flights flights;
@@ -60,6 +60,23 @@ public class Booking implements Serializable {
     @Override
     public String toString() {
         return String.format("|ID: %02d | |Passenger: %9s %9s| |Flight: %s |Date: %s|", id, passengers.getFirstName().toUpperCase(), passengers.getLastName().toUpperCase(), flights, booked );
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return id == booking.id &&
+                Objects.equals(user, booking.user) &&
+                Objects.equals(flights, booking.flights) &&
+                Objects.equals(passengers, booking.passengers) &&
+                Objects.equals(booked, booking.booked);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, user, flights, passengers, booked);
     }
 }
 

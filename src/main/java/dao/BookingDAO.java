@@ -4,8 +4,6 @@ import models.*;
 
 import java.io.*;
 import java.util.*;
-import java.util.stream.IntStream;
-
 public class BookingDAO implements DAO<Booking>{
 
     private  List<Booking> books = new LinkedList<>();
@@ -48,12 +46,6 @@ public class BookingDAO implements DAO<Booking>{
         }
     }
 
-//    public static void main(String[] args) {
-//        BookingDAO bookingDAO = new BookingDAO();
-//        FlightsDAO flights = new FlightsDAO();
-//        bookingDAO.create(new Booking(new User("vddv","sicsiv"),new Passenger("ALI","LOI"),flights.get(12)));
-//        bookingDAO.getAll().forEach(System.out::println);
-//    }
 
 
 }

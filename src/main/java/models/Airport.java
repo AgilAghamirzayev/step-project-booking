@@ -2,29 +2,21 @@ package models;
 
 public enum  Airport {
 
-    ALYASKA("PA"),
-    HAWAII("PH"),
-    BAKU("HEIA"),
-    ITALY("TAR"),
-    MEXICO("TAM"),
-    ESTONIA("EETU"),
-    COLOMBIA("TBC"),
-    ARIZONA("TBC"),
-    RUSSIA("UUOT"),
-    SPAIN("TCI"),
-    INDIA("VOTK"),
-    CHINA("ZUTC"),
-    BRAZIL("SBTL"),
-    LONDON("LAL"),
-    BARCELONA("BAR"),
-    KIEV("KV");
-    private final String code;
+    ALYASKA,
+    HAWAII,
+    BAKU,
+    ITALY,
+    MEXICO,
+    ESTONIA,
+    COLOMBIA,
+    ARIZONA,
+    RUSSIA,
+    SPAIN,
+    INDIA,
+    CHINA,
+    BRAZIL,
+    LONDON,
+    BARCELONA,
+    KIEV;
 
-    Airport(String code) {
-        this.code = code;
-    }
-
-    public String getCode() {
-        return code;
-    }
 }

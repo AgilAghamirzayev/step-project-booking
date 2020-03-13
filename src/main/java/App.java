@@ -1,10 +1,7 @@
-import console.Choose;
-import java.io.IOException;
-
+import console.Core;
 public class App {
-
-    public static void main(String[] args) throws InterruptedException, IllegalMonitorStateException, IOException, ClassNotFoundException {
-        Choose choose = new Choose();
-        choose.user_choose();
+    public static void main(String[] args) throws  IllegalMonitorStateException {
+        Core core = new Core();
+        core.user_choose();
     }
 }

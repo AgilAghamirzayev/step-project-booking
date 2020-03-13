@@ -46,7 +46,7 @@ public class FlightsDAO  implements DAO<Flights> {
     public void write() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)))){
             Random random = new Random();
-            for (int i = 1; i <= 60; i++) {
+            for (int i = 1; i <= 100; i++) {
                 Month month=Month.values()[random.nextInt(Month.values().length)];
                 Airport from = Airport.valueOf("KIEV");
                 Airport to = Airport.values()[random.nextInt(Airport.values().length)];
