@@ -4,17 +4,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FlightsServiceTest {
+class BookingServiceTest {
 
     @Test
-    void getAllFlights() {
+    void makeBooking() {
     }
 
     @Test
-    void book() {
+    void getBookingsByUser() {
     }
 
     @Test
-    void search() {
+    void cancelBooking() {
     }
 }
