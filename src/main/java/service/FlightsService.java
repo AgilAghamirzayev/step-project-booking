@@ -2,6 +2,7 @@ package service;
 
 import dao.FlightsDAO;
 import models.Airport;
+import models.Booking;
 import models.Flights;
 
 import java.time.LocalDate;
@@ -37,16 +38,6 @@ public class FlightsService  {
                                 to.equals(f.getTo().toString()) &&
                                 departure.equals(f.getDeparture().toLocalDate().toString())).collect(Collectors.toList());
     }
-
-    public Flights getFlightById(int id){
-        return dao.get(id);
-    }
-
-    public Optional<Flights> getAirline(String airline){
-        return dao.getAll().stream()
-                .filter(flights -> flights.getAirline().toString().equals(airline)).findAny();
-    }
-
 
 }
 

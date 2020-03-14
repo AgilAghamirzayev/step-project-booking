@@ -4,7 +4,6 @@ import java.util.Collection;
 
 public interface DAO<T> {
 
-    T get(int id);
     Collection<T> getAll();
     void create(T data);
     void delete(int id);

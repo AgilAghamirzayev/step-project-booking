@@ -16,10 +16,6 @@ public class UserService {
          dao.create(user);
     }
 
-    public User getUser(int id) {
-        return dao.get(id);
-    }
-
     public Optional<User> login(String username, String password){
         return dao.getAll().stream().filter(u->
                         username.equals(u.getUsername()) &&

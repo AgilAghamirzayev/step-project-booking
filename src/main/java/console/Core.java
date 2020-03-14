@@ -6,202 +6,78 @@ import controller.UserController;
 import dao.FlightsDAO;
 import menu.BookingMenu;
 import menu.UserMenu;
-import models.*;
 import service.FlightsService;
-import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Core{
-    private static Scanner scanner = new Scanner(System.in);
-    User user = new User();
 
+    private static Scanner scanner = new Scanner(System.in);
+
+    UserController userController = new UserController();
     FlightsDAO flightsDAO = new FlightsDAO();
     FlightsService flightsService = new FlightsService(flightsDAO);
     FlightsController flightsController = new FlightsController(flightsService);
-    UserController userController = new UserController();
-    BookingController bookingController = new BookingController();
+    BookingController bookingController = new BookingController(flightsController,userController);
+
     BookingMenu booking_menu = new BookingMenu();
     UserMenu userMenu = new UserMenu();
 
-
-    public void login() throws InterruptedException, IOException, ClassNotFoundException {
-        System.out.print("Enter username: ");
-        String username = scanner.nextLine();
-        System.out.print("Enter password: ");
-        String password = scanner.nextLine();
-        Optional<User> users = userController.login(username, password);
-        if (users.isPresent()){
-            user=users.get();
-            booking_choose();
-        } else {
-            System.out.println("No such user found. First register");
-            user_choose();
-        }
-    }
-
-    public void createNewAccount() throws InterruptedException, IOException, ClassNotFoundException {
-        System.out.print("Enter username: ");
-        String username = scanner.nextLine();
-        System.out.print("Enter password: ");
-        String password = scanner.nextLine();
-        while (!userController.isUnique(username)){
-            System.out.println("The user name already registered, Choose another username");
-            username = scanner.nextLine();
-        }
-        user = new User(username, password);
-        userController.register(user);
-        System.out.println("Registered successfully");
-    }
-
-
-    public void showTimetable() {
-        System.out.println("===================================     TIMETABLE    =======================================");
-        System.out.println("| ID|  |       AIRLINES       |  |  FLY FROM  |  |   FLY TO   |  |   DATE-TIME    |  |SEATS|");
-        System.out.println("============================================================================================");
-        flightsController.getAllFlights().forEach(System.out::println);
-        System.out.println("============================================================================================");
-
-    }
-
-    public void searchFlight(){
-        System.out.print("Enter origin (Ex: Baku) : ");
-        String from = scanner.nextLine().toUpperCase().trim();
-        System.out.print("Enter destination (Ex: Baku) : ");
-        String to = scanner.nextLine().toUpperCase().trim();
-        System.out.print("Enter date in 'yyyy-mm-dd' format (Ex: 2020-10-10) : " );
-        String date = scanner.nextLine();
-
-        if (flightsController.search(from,to,date).isEmpty()){
-            System.out.println("There aren't available flight");
-        } else {
-            System.out.println("===================================     SEARCHING     ======================================");
-            System.out.println("| ID|  |       AIRLINES       |  |  FLY FROM  |  |   FLY TO   |  |   DATE-TIME    |  |SEATS|");
-            System.out.println("============================================================================================");
-            flightsController.search(from,to,date).forEach(System.out::println);
-            System.out.println("============================================================================================");
-        }
-    }
-
-
-    public  void makeBooking() {
-            System.out.println("======================     BOOKING     ======================");
-            System.out.println();
-            System.out.print("Enter origin (Ex: Baku) : ");
-            String from = scanner.nextLine().toUpperCase().trim();
-            System.out.print("Enter destination (Ex: Baku) : ");
-            String to = scanner.nextLine().toUpperCase().trim();
-            System.out.print("Enter date in 'yyyy-mm-dd' format (Ex: 2020-10-10) : ");
-            String date = scanner.nextLine().toUpperCase().trim();
-            System.out.print("Enter airline: ");
-            String airline = scanner.nextLine().toUpperCase().trim();
-            System.out.print("Enter number of passengers: ");
-            int numberOfPassengers = Integer.parseInt(scanner.nextLine());
-            if (flightsController.book(from,to,date,airline,numberOfPassengers).isEmpty()) {
-                System.out.println("There aren't available flight. Try again...");
-                makeBooking();
-            } else {
-                Flights flight = flightsController.book(from,to,date,airline,numberOfPassengers).stream().findAny().get();
-                IntStream.range(1, numberOfPassengers + 1).forEach(n -> {
-                    System.out.println("=====================   ADD PASSENGER(S)  =======================");
-                    System.out.print("Enter first name of passenger: " + n + ": ");
-                    String fName = scanner.nextLine();
-                    System.out.print("Enter last name of passenger: " + n + ": ");
-                    String lName = scanner.nextLine();
-                    bookingController.makeBooking(new Booking(user, new Passenger(fName, lName), flight));
-                });
-            }
-    }
-
-    public void showMyBooking(){
-        if (!bookingController.getBookingsByUser(user).isEmpty()) {
-            System.out.println("==================================================================================================================================================================");
-            System.out.println("|  ID   | |         Passengers           | |Flight: |ID |  |        AIRLINE       |  |    FROM    |  |     TO     |  |FLIGHT DATE-TIME|  |SEATS| |  BOOKING DATE  |");
-            System.out.println("==================================================================================================================================================================");
-            bookingController.getBookingsByUser(user).forEach(System.out::println);
-            System.out.println("==================================================================================================================================================================");
-        }
-    }
-
-    public void cancelMyBooking(){
-        System.out.print("Enter the id of booking: ");
-        int id;
-        try {
-        List<Integer> ids = bookingController.getBookingsByUser(user).stream()
-                .map(Booking::getId).collect(Collectors.toList());
-        do {
-            id = Integer.parseInt(scanner.nextLine());
-        } while (!ids.contains(id));
-        bookingController.cancelBooking(id);
-    } catch (Exception e){
-            throw new IllegalArgumentException("Enter a valid ID");
-        }
-    }
-
-
     public void booking_choose()  {
-        try {
         boolean exit = true;
-        while (exit) {
-                Scanner scanner = new Scanner(System.in);
+            while (exit) {
                 System.out.println(booking_menu.show());
                 String a = scanner.nextLine();
                 switch (a) {
                     case "1":
-                        showTimetable();
+                        flightsController.showTimetable();
                         break;
                     case "2":
-                        searchFlight();
+                        flightsController.search();
                         break;
                     case "3":
-                        makeBooking();
+                        bookingController.makeBooking();
                         break;
                     case "4":
-                        showMyBooking();
+                        bookingController.showMyBooking();
                         break;
                     case "5":
-                        cancelMyBooking();
+                        bookingController.cancelBooking();
                         break;
                     case "6":
+                        exit=false;
                         user_choose();
                         break;
                     default:
-                        throw new IllegalArgumentException("Enter a valid command: " + a);
+                        System.out.println("Choose only possible command");
                 }
             }
-        } catch (Exception e){
-            System.out.println("Choose only possible command ");
-                booking_choose();
-        }
 }
 
     public void user_choose() {
-        try {
         boolean exit = true;
         while (exit) {
-                Scanner scanner = new Scanner(System.in);
                 System.out.println(userMenu.show());
                 String  a = scanner.nextLine();
                 switch (a) {
                     case "1":
-                        login();
+                        if (userController.login()) {
+                            booking_choose();
+                        } else {
+                            user_choose();
+                        }
                         break;
                     case "2":
-                        createNewAccount();
+                        userController.register();
                         break;
                     case "3":
+                        System.out.println("Thanks for using my app :). See you see");
                         exit = false;
                         break;
                     default:
-                        throw new IllegalArgumentException("Enter a valid order: " + a);
+                        System.out.println("Choose only possible command");
                 }
             }
-        } catch (Exception e){
-            System.out.println("Choose only possible command ");
-            user_choose();
-        }
+
     }
+
 }

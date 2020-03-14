@@ -15,12 +15,6 @@ public class FlightsDAO  implements DAO<Flights> {
     private  File file = new File("flightsFile.txt");
 
     @Override
-    public Flights get(int id) {
-        write();
-        return flights.get(id);
-    }
-
-    @Override
     public Collection<Flights> getAll() {
         try (ObjectInputStream ois = new ObjectInputStream( new BufferedInputStream(new FileInputStream(file)))) {
             return (List<Flights>) ois.readObject();

@@ -10,11 +10,6 @@ public class BookingDAO implements DAO<Booking>{
     private File file = new File("booksFile.txt");
 
     @Override
-    public Booking get(int id) {
-        return books.get(id);
-    }
-
-    @Override
     public Collection<Booking> getAll() {
         try (ObjectInputStream ois = new ObjectInputStream( new BufferedInputStream(new FileInputStream(file)))) {
             return (List<Booking>) ois.readObject();

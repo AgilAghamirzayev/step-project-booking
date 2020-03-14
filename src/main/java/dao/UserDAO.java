@@ -11,12 +11,6 @@ public class UserDAO  implements DAO<User>{
     private List<User> users = new LinkedList<>();
     private File file = new File("userFile.txt");
 
-
-    @Override
-    public User get(int id)  {
-        return users.get(id);
-    }
-
     @Override
     public Collection<User> getAll() {
         try (ObjectInputStream ois = new ObjectInputStream( new BufferedInputStream(new FileInputStream(file)))) {
