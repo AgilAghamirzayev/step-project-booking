@@ -62,8 +62,8 @@ public class FlightsDAO  implements DAO<Flights> {
                 }
             }
             oos.writeObject(flights);
-        } catch (IOException ignored){
-
+        } catch (IOException i){
+            throw new RuntimeException("FlightsDAO:write:IOException", i);
         }
     }
 }

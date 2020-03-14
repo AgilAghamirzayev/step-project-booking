@@ -21,7 +21,8 @@ public class BookingService  {
     }
 
     public List<Booking> getBookingsByUser(User user) {
-        return dao.getAll().stream()
+        return dao.getAll()
+                .stream()
                 .filter(booking -> booking.getUser().equals(user))
                 .collect(Collectors.toList());
     }

@@ -8,8 +8,8 @@ import java.util.Objects;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static int counter=1;
 
+    private static int counter=1;
     private  int id;
     private  String username;
     private  String password;
@@ -18,13 +18,6 @@ public class User implements Serializable {
 
     public User(String username, String password) {
         this.id = counter++;
-        this.username = username;
-        this.password = password;
-        this.bookings = new ArrayList<>();
-    }
-
-    public User(int id, String username, String password) {
-        this.id = id;
         this.username = username;
         this.password = password;
         this.bookings = new ArrayList<>();

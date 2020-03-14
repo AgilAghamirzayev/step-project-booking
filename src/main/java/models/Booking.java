@@ -36,29 +36,9 @@ public class Booking implements Serializable {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Flights getFlights() {
-        return flights;
-    }
-
-    public void setFlights(Flights flights) {
-        this.flights = flights;
-    }
-
-    public Passenger getPassengers() {
-        return passengers;
-    }
-
-    public void setPassengers(Passenger passengers) {
-        this.passengers = passengers;
-    }
-
     @Override
     public String toString() {
-        return String.format("|ID: %02d | |Passenger: %9s %9s| |Flight: %s |Date: %s|", id, passengers.getFirstName().toUpperCase(), passengers.getLastName().toUpperCase(), flights, booked );
+        return String.format("|ID: %02d | |Passenger: %-9s %-9s| |Flight: %s |Date: %s|", id, passengers.getFirstName().toUpperCase(), passengers.getLastName().toUpperCase(), flights, booked );
     }
 
     @Override

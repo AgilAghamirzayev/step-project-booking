@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class FlightsService  {
+
     private final FlightsDAO dao;
 
     public FlightsService(FlightsDAO dao) {
@@ -21,13 +22,20 @@ public class FlightsService  {
         return new ArrayList<>(dao.getAll());
     }
 
-    public List<Flights> search(Airport from, Airport to, LocalDate departure, int passengersnum) {
-        return dao.getAll().stream()
-                .filter(f->
-                        from.equals(f.getFrom()) &&
-                        to.equals(f.getTo()) &&
-                        (f.getDeparture().toLocalDate().equals(departure)) &&
-                        f.getAvailableSeats()>=passengersnum).collect(Collectors.toList());
+    public List<Flights> book(String from, String to, String departure,String airline, int passengersNum) {
+        return dao.getAll().stream().filter(f->
+                                from.equals(f.getFrom().toString()) &&
+                                to.equals(f.getTo().toString()) &&
+                                departure.equals(f.getDeparture().toLocalDate().toString()) &&
+                                airline.equals(f.getAirline().toString()) &&
+                                passengersNum <= f.getAvailableSeats()).collect(Collectors.toList());
+    }
+
+    public List<Flights> search(String from, String to, String departure) {
+        return dao.getAll().stream().filter(f->
+                        from.equals(f.getFrom().toString()) &&
+                                to.equals(f.getTo().toString()) &&
+                                departure.equals(f.getDeparture().toLocalDate().toString())).collect(Collectors.toList());
     }
 
     public Flights getFlightById(int id){
@@ -36,7 +44,9 @@ public class FlightsService  {
 
     public Optional<Flights> getAirline(String airline){
         return dao.getAll().stream()
-                .filter(flights -> flights.getAirline().equals(airline)).findAny();
+                .filter(flights -> flights.getAirline().toString().equals(airline)).findAny();
     }
 
+
 }
+

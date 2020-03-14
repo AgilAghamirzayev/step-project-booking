@@ -1,8 +1,6 @@
 package dao;
-import javax.naming.AuthenticationException;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Optional;
 
 public interface DAO<T> {
 
@@ -11,4 +9,5 @@ public interface DAO<T> {
     void create(T data);
     void delete(int id);
     void write() throws IOException;
+
 }

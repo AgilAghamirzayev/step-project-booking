@@ -10,5 +10,4 @@ public class Write {
         flightsDAO.write();
         bookingDAO.write();
     }
-
 }

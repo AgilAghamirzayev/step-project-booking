@@ -1,13 +1,12 @@
 package controller;
 
-
 import models.Booking;
 import models.User;
 import service.BookingService;
-
 import java.util.List;
 
 public class BookingController  {
+
     private final BookingService service;
 
     public BookingController() {

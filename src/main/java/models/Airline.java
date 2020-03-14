@@ -12,9 +12,6 @@ public enum Airline {
     KOREAN_AIR,
     TURKISH_AIRLINES,
     WESTJET,
-    XIAMEN_AIRLINES,
-    PEGASUS_AIRLINES;
-
-
-
+    XIANS_AIRLINES,
+    PEGASUS_AIRLINES
 }

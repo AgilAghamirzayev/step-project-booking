@@ -35,8 +35,5 @@ public class UserController  {
         return service.login(username, password);
     }
 
-    public boolean logout(User user) {
-        return service.logout(user);
-    }
 
 }

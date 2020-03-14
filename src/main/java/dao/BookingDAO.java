@@ -9,7 +9,6 @@ public class BookingDAO implements DAO<Booking>{
     private  List<Booking> books = new LinkedList<>();
     private File file = new File("booksFile.txt");
 
-
     @Override
     public Booking get(int id) {
         return books.get(id);
@@ -45,7 +44,5 @@ public class BookingDAO implements DAO<Booking>{
             e.printStackTrace();
         }
     }
-
-
 
 }

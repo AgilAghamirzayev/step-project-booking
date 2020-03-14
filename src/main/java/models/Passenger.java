@@ -5,8 +5,9 @@ import java.util.Objects;
 
 public class Passenger implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static int counter;
 
+
+    private static int counter;
     private final int id;
     private final String firstName;
     private final String lastName;
@@ -14,12 +15,6 @@ public class Passenger implements Serializable {
 
     public Passenger( String firstName, String lastName) {
         this.id = counter++;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public Passenger(int id, String firstName, String lastName) {
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }

@@ -17,6 +17,6 @@ public enum  Airport {
     BRAZIL,
     LONDON,
     BARCELONA,
-    KIEV;
+    KIEV
 
 }

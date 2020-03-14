@@ -1,5 +1,6 @@
 package controller;
 
+import models.Airline;
 import models.Airport;
 import models.Flights;
 import service.FlightsService;
@@ -19,8 +20,12 @@ public class FlightsController  {
         return service.getAllFlights();
     }
 
-    public List<Flights> search(Airport from, Airport to, LocalDate departure, int passengersnum) {
-        return service.search(from, to, departure, passengersnum);
+    public List<Flights> book(String  from, String to, String departure, String airline,  int passengersNum) {
+        return service.book(from, to, departure, airline, passengersNum);
+    }
+
+    public List<Flights> search(String  from, String to, String departure) {
+        return service.search(from, to, departure);
     }
 
     public Flights getFlightById(int id){
