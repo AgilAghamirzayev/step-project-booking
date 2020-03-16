@@ -7,7 +7,7 @@ public class Passenger implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    private static int counter;
+    private static int counter=0;
     private final int id;
     private final String firstName;
     private final String lastName;

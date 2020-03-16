@@ -4,8 +4,6 @@ import controller.BookingController;
 import controller.FlightsController;
 import controller.UserController;
 import dao.FlightsDAO;
-import menu.BookingMenu;
-import menu.UserMenu;
 import service.FlightsService;
 import java.util.Scanner;
 

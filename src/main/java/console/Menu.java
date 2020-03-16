@@ -1,4 +1,4 @@
-package menu;
+package console;
 
 public interface Menu {
     String show();

@@ -1,4 +1,4 @@
-package menu;
+package console;
 
 public class UserMenu implements Menu{
     @Override
