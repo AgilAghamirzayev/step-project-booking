@@ -21,8 +21,8 @@ public class Core{
     UserMenu userMenu = new UserMenu();
 
     public void booking_choose()  {
-        boolean exit = true;
-            while (exit) {
+        boolean exit = false;
+            while (!exit) {
                 System.out.println(booking_menu.show());
                 String a = scanner.nextLine();
                 switch (a) {
@@ -42,7 +42,7 @@ public class Core{
                         bookingController.cancelBooking();
                         break;
                     case "6":
-                        exit=false;
+                        exit=true;
                         user_choose();
                         break;
                     default:
@@ -52,8 +52,8 @@ public class Core{
 }
 
     public void user_choose() {
-        boolean exit = true;
-        while (exit) {
+        boolean exit = false;
+        while (!exit) {
                 System.out.println(userMenu.show());
                 String  a = scanner.nextLine();
                 switch (a) {
@@ -69,7 +69,7 @@ public class Core{
                         break;
                     case "3":
                         System.out.println("Thanks for using my app :). See you see");
-                        exit = false;
+                        exit = true;
                         break;
                     default:
                         System.out.println("Choose only possible command");
