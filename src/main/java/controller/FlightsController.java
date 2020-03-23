@@ -26,16 +26,21 @@ public class FlightsController  {
     }
 
     public void search() {
-        System.out.print("Enter id of flight: ");
-        int a = Integer.parseInt(scanner.nextLine());
-        if (service.search(a).isEmpty()){
-            System.out.println("There aren't available flight");
-        } else {
-            System.out.println("===================================     SEARCHING     ======================================");
-            System.out.println("| ID|  |       AIRLINES       |  |  FLY FROM  |  |   FLY TO   |  |   DATE-TIME    |  |SEATS|");
-            System.out.println("============================================================================================");
-            service.search(a).forEach(System.out::println);
-            System.out.println("============================================================================================");
+        int id = 0;
+        try {
+            System.out.print("Enter id of flight: ");
+            id = Integer.parseInt(scanner.nextLine());
+            if (service.search(id).isEmpty()) {
+                System.out.println("There aren't available flight");
+            } else {
+                System.out.println("===================================     SEARCHING     ======================================");
+                System.out.println("| ID|  |       AIRLINES       |  |  FLY FROM  |  |   FLY TO   |  |   DATE-TIME    |  |SEATS|");
+                System.out.println("============================================================================================");
+                service.search(id).forEach(System.out::println);
+                System.out.println("============================================================================================");
+            }
+        }  catch (Exception e){
+            System.out.println("There aren't any user in " + id +" id");
         }
     }
 

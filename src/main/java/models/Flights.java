@@ -54,7 +54,7 @@ public class Flights implements Serializable {
     }
 
     public int getAvailableSeats(){
-        return size - passengers.size();
+        return size -=1;
     }
 
     @Override

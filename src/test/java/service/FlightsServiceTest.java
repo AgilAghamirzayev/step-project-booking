@@ -36,9 +36,7 @@ FlightsDAO dao = new FlightsDAO();
 
     @Test
     void getAllFlights() {
-        String expect = "";
-       // String actual = service.getAllFlights().stream().filter(s->s.g);
-      //  assertEquals(expect,actual);
+
     }
 
     @Test
