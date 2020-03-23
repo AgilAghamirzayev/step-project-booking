@@ -4,6 +4,7 @@ import models.Airline;
 import models.Airport;
 import models.Flights;
 import java.io.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.*;
@@ -26,8 +27,8 @@ public class FlightsDAO  implements DAO<Flights> {
 
     @Override
     public void create(Flights flight) {
-        write();
         flights.add(flight);
+        write();
     }
 
     @Override
@@ -49,7 +50,7 @@ public class FlightsDAO  implements DAO<Flights> {
                             Airline.values()[random.nextInt(Airline.values().length)],
                             from,
                             to,
-                            LocalDateTime.of(2020, month,random.nextInt(month.length(true))+1,random.nextInt(23),random.nextInt(59)),
+                            LocalDateTime.of(LocalDate.now().getYear(), LocalDate.now().getMonth(),LocalDate.now().getDayOfMonth(),random.nextInt(23),random.nextInt(59)),
                             (random.nextInt(150-70+1)+70)));
                 } else {
                     i--;

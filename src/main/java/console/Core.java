@@ -17,13 +17,13 @@ public class Core{
     FlightsController flightsController = new FlightsController(flightsService);
     BookingController bookingController = new BookingController(flightsController,userController);
 
-    BookingMenu booking_menu = new BookingMenu();
+    BookingMenu bookingMenu = new BookingMenu();
     UserMenu userMenu = new UserMenu();
 
-    public void booking_choose()  {
+    public void bookingChoose()  {
         boolean exit = false;
             while (!exit) {
-                System.out.println(booking_menu.show());
+                System.out.println(bookingMenu.show());
                 String a = scanner.nextLine();
                 switch (a) {
                     case "1":
@@ -43,7 +43,7 @@ public class Core{
                         break;
                     case "6":
                         exit=true;
-                        user_choose();
+                        userChoose();
                         break;
                     default:
                         System.out.println("Choose only possible command");
@@ -51,7 +51,7 @@ public class Core{
             }
 }
 
-    public void user_choose() {
+    public void userChoose() {
         boolean exit = false;
         while (!exit) {
                 System.out.println(userMenu.show());
@@ -59,9 +59,9 @@ public class Core{
                 switch (a) {
                     case "1":
                         if (userController.login()) {
-                            booking_choose();
+                            bookingChoose();
                         } else {
-                            user_choose();
+                            userChoose();
                         }
                         break;
                     case "2":

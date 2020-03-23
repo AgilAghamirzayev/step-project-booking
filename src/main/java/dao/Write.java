@@ -2,7 +2,7 @@ package dao;
 
 public class Write {
 
-    public static void main(String[] args) {
+    public void write(){
         UserDAO userDAO = new UserDAO();
         FlightsDAO flightsDAO = new FlightsDAO();
         BookingDAO bookingDAO = new BookingDAO();

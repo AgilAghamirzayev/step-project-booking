@@ -12,7 +12,6 @@ public class UserController  {
 
     User user = new User();
 
-
     public UserController() {
         this.service = new UserService();
     }

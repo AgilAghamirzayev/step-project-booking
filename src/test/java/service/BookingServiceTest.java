@@ -24,14 +24,12 @@ class BookingServiceTest {
     public void setUp(){
         service = new BookingService();
         user = new User("Aqil","Zeka");
-
         Passenger passenger1 = new Passenger("Ali", "Aliyev");
         Passenger passenger2 = new Passenger("Zaur", "Hasanov");
         passenger3 = new Passenger("Ayxan","Memmedov");
         flights = new Flights(1, Airline.AZAL,Airport.KIEV,Airport.BAKU, LocalDateTime.of(2020, 3,16,16,12),30);
         booking1 = new Booking(user, passenger1,flights);
         booking2 = new Booking(user, passenger2,flights);
-
 
     }
 

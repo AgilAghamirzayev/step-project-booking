@@ -24,7 +24,6 @@ public class User implements Serializable {
     }
 
     public User(){
-
     }
 
     public Integer getId() {
@@ -46,7 +45,6 @@ public class User implements Serializable {
     void addBooking(Booking booking){
         bookings.add(booking);
     }
-
 
     @Override
     public String toString() {

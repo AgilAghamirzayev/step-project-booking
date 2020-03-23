@@ -29,7 +29,7 @@ public class Flights implements Serializable {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public Airline getAirline() {
@@ -61,7 +61,6 @@ public class Flights implements Serializable {
     public String toString() {
         return String.format("|%03d|  |  %-20s|  |  %-10s|  |  %-10s|  |%-16s|  | %03d |", id, airline, src,dst,departure.toString().replace("T", " "), getAvailableSeats());
     }
-
 
     @Override
     public boolean equals(Object o) {

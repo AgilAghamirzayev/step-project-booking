@@ -26,20 +26,15 @@ public class FlightsController  {
     }
 
     public void search() {
-        System.out.print("Enter origin (Ex: Baku) : ");
-        String from = scanner.nextLine().toUpperCase().trim();
-        System.out.print("Enter destination (Ex: Baku) : ");
-        String to = scanner.nextLine().toUpperCase().trim();
-        System.out.print("Enter date in 'yyyy-mm-dd' format (Ex: 2020-10-10) : " );
-        String date = scanner.nextLine();
-
-        if (service.search(from,to,date).isEmpty()){
+        System.out.print("Enter id of flight: ");
+        int a = Integer.parseInt(scanner.nextLine());
+        if (service.search(a).isEmpty()){
             System.out.println("There aren't available flight");
         } else {
             System.out.println("===================================     SEARCHING     ======================================");
             System.out.println("| ID|  |       AIRLINES       |  |  FLY FROM  |  |   FLY TO   |  |   DATE-TIME    |  |SEATS|");
             System.out.println("============================================================================================");
-            service.search(from,to,date).forEach(System.out::println);
+            service.search(a).forEach(System.out::println);
             System.out.println("============================================================================================");
         }
     }

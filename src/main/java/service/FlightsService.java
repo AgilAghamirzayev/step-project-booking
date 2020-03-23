@@ -32,11 +32,8 @@ public class FlightsService  {
                                 passengersNum <= f.getAvailableSeats()).collect(Collectors.toList());
     }
 
-    public List<Flights> search(String from, String to, String departure) {
-        return dao.getAll().stream().filter(f->
-                        from.equals(f.getFrom().toString()) &&
-                                to.equals(f.getTo().toString()) &&
-                                departure.equals(f.getDeparture().toLocalDate().toString())).collect(Collectors.toList());
+    public List<Flights> search(int  id) {
+        return dao.getAll().stream().filter(f->id==f.getId()).collect(Collectors.toList());
     }
 
 }
