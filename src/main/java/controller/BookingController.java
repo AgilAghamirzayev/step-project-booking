@@ -88,5 +88,4 @@ public class BookingController  {
             System.out.println("There aren't any user in " + id +" id");
         }
     }
-
 }
