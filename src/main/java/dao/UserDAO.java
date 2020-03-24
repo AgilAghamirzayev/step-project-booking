@@ -8,7 +8,7 @@ import java.util.*;
 
 public class UserDAO  implements DAO<User>{
 
-    private List<User> users = new LinkedList<>();
+    private List<User> users = new ArrayList<>();
     private File file = new File("userFile.txt");
 
     @Override

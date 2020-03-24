@@ -35,7 +35,7 @@ public class BookingController  {
             String date = scanner.nextLine().toUpperCase().trim();
             System.out.print("Enter airline: ");
             String airline = scanner.nextLine().toUpperCase().trim();
-            System.out.print("Enter number of passengers: ");
+            System.out.println("Enter id of flights");
             int numberOfPassengers = Integer.parseInt(scanner.nextLine());
             if (flightsController.book(from, to, date, airline, numberOfPassengers).isEmpty()) {
                 System.out.println("There aren't available flight. Try again...");

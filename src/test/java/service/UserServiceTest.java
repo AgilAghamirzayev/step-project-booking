@@ -1,6 +1,8 @@
 package service;
 
-import org.junit.jupiter.api.Test;
+import dao.UserDAO;
+import models.User;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,19 +12,27 @@ import org.junit.jupiter.api.Test;
 
 class UserServiceTest {
 
-    @org.junit.jupiter.api.Test
+    UserService service;
+    UserDAO dao;
+    User user;
+
+    @BeforeEach
+    void setUp(){
+        new UserService();
+        new UserDAO();
+        new User("A","A");
+    }
+
+    @Test
     void register() {
     }
 
-    @org.junit.jupiter.api.Test
-    void getUser() {
-    }
-
-    @org.junit.jupiter.api.Test
+    @Test
     void login() {
+
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void isUnique() {
     }
 }

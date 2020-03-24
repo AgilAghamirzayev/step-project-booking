@@ -12,8 +12,9 @@ public class UserService {
         this.dao = new UserDAO();
     }
 
-    public void register(User user){
+    public boolean register(User user){
          dao.create(user);
+         return true;
     }
 
     public Optional<User> login(String username, String password){

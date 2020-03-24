@@ -56,7 +56,5 @@ class BookingServiceTest {
         service.makeBooking(booking2);
         List<Booking> bookings = service.getBookingsByUser(user);
         assertEquals(2, bookings.size());
-        service.cancelBooking(1);
-        service.cancelBooking(2);
     }
 }

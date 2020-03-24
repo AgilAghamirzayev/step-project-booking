@@ -1,5 +1,5 @@
 import console.Core;
-import dao.Write;
+import models.Write;
 
 public class App {
     public static void main(String[] args) throws  IllegalMonitorStateException {
